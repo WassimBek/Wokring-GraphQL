@@ -3,9 +3,12 @@ import {ApolloServer} from '@apollo/server'
 // import startStandaloneServer for start runnig the server
 import {startStandaloneServer} from '@apollo/server/standalone'
 
+import { typeDefs } from './Schema'
+
 const PORT = process.env.PORT || 3000
 const server = new ApolloServer({
-
+    typeDefs ,
+    //resolvers
 })
 
 const {url} =await startStandaloneServer(server , {
