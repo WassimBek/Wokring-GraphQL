@@ -35,6 +35,26 @@ const resolvers = {
         author(parent , {id} , context){
             return data.authors.find(data => data.id == id)
         }
+    },
+    Game: {
+        // so parent is the data that i got from the resolvers games or game in Query 
+        // adn that's used if i need related data example : game and review they related by game_id in reviews 
+        reviews(parent){
+            return data.reviews.filter(reviewdata => reviewdata.game_id == parent.id)
+        }
+    },
+    Author:{
+        reviews(parent){
+            return data.reviews.filter(reviewdata => reviewdata.author_id == parent.id)
+        },
+    },
+    Review: {
+        game(parent){
+            return data.games.find(gameData => gameData.id == parent.game_id)
+        },
+        author(parent){
+            return data.authors.find(authorData => authorData.id == parent.author_id)
+        },
     }
 }
 
