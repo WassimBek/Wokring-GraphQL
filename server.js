@@ -57,7 +57,7 @@ const resolvers = {
         },
     } ,
 
-    Mutation :{
+    Mutation: {
         deleteGame(parent , args , context) {
             const findData = data.games.findIndex(game => game.id == args.id)
             data.games.splice(findData , 1)
@@ -70,6 +70,12 @@ const resolvers = {
             }
             data.games.push(game)
             return game 
+        },
+        updateGame(parent , args , context) {
+            const dataIndex = data.games.findIndex(data => data.id == args.id)
+            data.games[dataIndex].title = args.editgame.title || data.games[dataIndex].title 
+            data.games[dataIndex].platform = args.editgame.platform || data.games[dataIndex].platform
+            return data.games[dataIndex]  
         }
     }
 }

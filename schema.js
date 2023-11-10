@@ -39,9 +39,15 @@ export const typeDefs = `#graphql
         # deleteGame is for
         deleteGame(id: ID!): Game
         addGame(game: addGameInput): Game!
+        updateGame(id: ID! , editgame:updateGameInput) : Game!
     }
     input addGameInput {
         title: String! 
         platform: [String!]!
     }
+    input updateGameInput {
+        title: String,
+        platform: [String!]
+    }
+    
 `
