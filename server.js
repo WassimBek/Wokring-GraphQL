@@ -25,6 +25,15 @@ const resolvers = {
         },
         authors () {
             return data.authors 
+        },
+        review (parent , args , context) {
+            return data.reviews.find(data => data.id == args.id)
+        },
+        game(parent , {id} , context){
+            return data.games.find(data => data.id == id)
+        },
+        author(parent , {id} , context){
+            return data.authors.find(data => data.id == id)
         }
     }
 }

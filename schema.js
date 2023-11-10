@@ -21,8 +21,12 @@ export const typeDefs = `#graphql
 
     type Query {
         reviews: [Review]
+        #adding querry variable for single data         
+        review(id: ID!): Review
         games: [Game]
+        game(id: ID!): Game
         authors: [Author]
+        author(id: ID!): Author
     }
 
 `
