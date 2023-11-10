@@ -55,6 +55,22 @@ const resolvers = {
         author(parent){
             return data.authors.find(authorData => authorData.id == parent.author_id)
         },
+    } ,
+
+    Mutation :{
+        deleteGame(parent , args , context) {
+            const findData = data.games.findIndex(game => game.id == args.id)
+            data.games.splice(findData , 1)
+            return data.games
+        },
+        addGame(parent , args , context){
+            let game = {
+                ...args.game,
+                id : Math.floor(Math.random() * 100000).toString()
+            }
+            data.games.push(game)
+            return game 
+        }
     }
 }
 
